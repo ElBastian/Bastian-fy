@@ -1,4 +1,5 @@
 # Bastian-fy
+Hecho por Sebastián Lara
 Reproductor de música hecho con HTML, CSS y JavaScript básico.
 
 ## Cómo abrirlo
