@@ -1,0 +1,391 @@
+
+:root {
+  --pergamino: #e2dedb;   /* fondo de la página */
+  --crema: #cdc6be;       /* fondo de las tarjetas */
+  --tinta: #1d1d1b;       /* texto y bordes */
+  --carbon: #69645f;      /* texto secundario */
+  --naranja: #c03f13;     /* único color de acento */
+
+  --letra-texto: 'Source Serif 4', Georgia, serif;
+  --letra-titulos: 'Bodoni Moda', Didot, Georgia, serif;
+
+  --radio-boton: 2.88px;
+  --radio-tarjeta: 11.52px;
+  --sombra: rgba(29, 29, 27, 0.2) -4px 4px 6px 0px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--pergamino);
+  color: var(--tinta);
+  font-family: var(--letra-texto);
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 1.27;
+  min-height: 100vh;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.oculto {
+  display: none !important;
+}
+
+.banner {
+  background: var(--tinta);
+  color: var(--pergamino);
+  overflow: hidden;
+  padding: 18px 16px 6px;
+}
+
+.banner h1 {
+  font-family: var(--letra-titulos);
+  font-weight: 700;
+  font-size: clamp(64px, 16vw, 230px);
+  line-height: 0.78;
+  letter-spacing: -0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.tarjeta {
+  background: var(--crema);
+  border-radius: var(--radio-tarjeta);
+  box-shadow: var(--sombra);
+  padding: 24px;
+}
+
+.login {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.banner-login h1 {
+  text-align: center;
+}
+
+.login-caja {
+  width: calc(100% - 32px);   
+  max-width: 380px;
+  margin: 43px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.login-caja h2 {
+  font-family: var(--letra-titulos);
+  font-size: 40px;
+  line-height: 0.91;
+  letter-spacing: -0.04em;
+  margin-bottom: 14px;
+}
+
+.login-caja label {
+  font-size: 14px;
+  color: var(--carbon);
+  margin-top: 6px;
+}
+
+.login-caja input {
+  font-family: inherit;
+  font-size: 17px;
+  padding: 10px 12px;
+  border: 1px solid var(--tinta);
+  border-radius: var(--radio-boton);
+  background: var(--pergamino);
+  color: var(--tinta);
+}
+
+.login-caja input:focus {
+  outline: 2px solid var(--naranja);
+  outline-offset: 1px;
+}
+
+.error {
+  color: var(--naranja);
+  font-size: 15px;
+  min-height: 20px;
+}
+
+.boton-principal {
+  background: var(--tinta);
+  color: var(--pergamino);
+  border: none;
+  border-radius: var(--radio-boton);
+  padding: 12px;
+  font-size: 18px;
+}
+
+.boton-principal:hover {
+  background: #000;
+}
+
+/* ---------- 6. Barra superior ---------- */
+.barra-superior {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--tinta);
+  font-size: 17px;
+}
+
+.marca {
+  font-style: italic;
+}
+
+.enlace {
+  background: none;
+  border: none;
+  color: var(--tinta);
+  font-size: 17px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ---------- 7. Distribución: reproductor + lista ---------- */
+/* En celular: una columna (una cosa debajo de otra) */
+.contenido {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px 43px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 29px;
+}
+
+/* ---------- 8. Reproductor ---------- */
+.reproductor {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.portada {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+  background: var(--pergamino);
+}
+
+.etiqueta {
+  display: inline-block;
+  background: var(--naranja);
+  color: var(--pergamino);
+  font-size: 13px;
+  padding: 2px 7px;
+  border-radius: var(--radio-boton);
+  margin-bottom: 10px;
+}
+
+.info h2 {
+  font-family: var(--letra-titulos);
+  font-weight: 700;
+  font-size: clamp(36px, 9vw, 60px);
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+}
+
+.artista {
+  font-size: 20px;
+  font-style: italic;
+  color: var(--carbon);
+  margin-top: 8px;
+}
+
+/* Barra de progreso */
+.progreso input[type="range"] {
+  width: 100%;
+  height: 4px;
+  -webkit-appearance: none;
+  appearance: none;
+  /* El fondo se pinta desde JavaScript para mostrar lo que ya sonó */
+  background: var(--pergamino);
+  cursor: pointer;
+}
+
+.progreso input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--tinta);
+}
+
+.progreso input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border: none;
+  border-radius: 50%;
+  background: var(--tinta);
+}
+
+.tiempos {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: var(--carbon);
+  margin-top: 8px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Botones */
+.controles {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 22px;
+}
+
+.boton-control {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--tinta);
+  border-radius: var(--radio-boton);
+  color: var(--tinta);
+}
+
+.boton-control svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+.boton-control:hover {
+  background: var(--pergamino);
+}
+
+.boton-grande {
+  width: 68px;
+  height: 68px;
+  background: var(--tinta);
+  color: var(--pergamino);
+}
+
+.boton-grande:hover {
+  background: #000;
+}
+
+.boton-grande svg {
+  width: 30px;
+  height: 30px;
+}
+
+/* ---------- 9. Lista de canciones ---------- */
+.lista h2 {
+  font-family: var(--letra-titulos);
+  font-size: 32px;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--tinta);
+}
+
+.lista ol {
+  list-style: none;
+}
+
+.lista li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 4px;
+  border-bottom: 1px solid var(--tinta);
+  cursor: pointer;
+}
+
+.lista li:hover {
+  background: var(--crema);
+}
+
+.lista .numero {
+  font-family: var(--letra-titulos);
+  font-size: 26px;
+  width: 36px;
+  flex-shrink: 0;
+}
+
+.lista .mini-portada {
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+}
+
+.lista .datos {
+  flex: 1;
+  min-width: 0;          /* permite recortar textos largos */
+}
+
+.lista .datos strong {
+  display: block;
+  font-weight: 400;
+  font-size: 19px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lista .datos span {
+  font-size: 15px;
+  color: var(--carbon);
+}
+
+/* Canción que está sonando */
+.lista li.activa {
+  background: var(--tinta);
+  color: var(--pergamino);
+}
+
+.lista li.activa .datos span {
+  color: var(--crema);
+}
+
+/* ---------- 10. COMPUTADORA (pantallas de 900px o más) ---------- */
+@media (min-width: 900px) {
+  .contenido {
+    grid-template-columns: 420px 1fr;  /* dos columnas */
+    align-items: start;
+    gap: 43px;
+    padding-top: 43px;
+  }
+
+  /* El reproductor se queda fijo al bajar por la lista */
+  .reproductor {
+    position: sticky;
+    top: 24px;
+  }
+
+  .barra-superior {
+    padding: 14px 28px;
+  }
+}
+
+/* ---------- 11. Celulares muy chicos ---------- */
+@media (max-width: 380px) {
+  .tarjeta {
+    padding: 16px;
+  }
+
+  .controles {
+    gap: 12px;
+  }
+
+  .lista .mini-portada {
+    display: none;
+  }
+}
