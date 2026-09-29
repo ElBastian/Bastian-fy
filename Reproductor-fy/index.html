@@ -16,6 +16,9 @@
 </head>
 <body>
 
+  <!-- ============================================ -->
+  <!-- PANTALLA 1: LOGIN                            -->
+  <!-- ============================================ -->
   <section id="pantalla-login" class="login">
     <div class="banner banner-login">
       <h1>Bastian-fy</h1>
@@ -30,26 +33,34 @@
       <label for="campo-contrasena">Contraseña</label>
       <input type="password" id="campo-contrasena" autocomplete="current-password" required>
 
+      <!-- Aquí se muestra el mensaje de error si los datos están mal -->
       <p id="mensaje-error" class="error"></p>
 
       <button type="submit" class="boton-principal">Entrar</button>
     </form>
   </section>
 
+
+  <!-- ============================================ -->
+  <!-- PANTALLA 2: REPRODUCTOR (oculta al inicio)   -->
+  <!-- ============================================ -->
   <section id="pantalla-reproductor" class="oculto">
 
+    <!-- Barra de arriba -->
     <header class="barra-superior">
       <span id="saludo">Hola</span>
       <span class="marca">Bastian-fy</span>
       <button id="boton-salir" class="enlace">Cerrar sesión</button>
     </header>
 
+    <!-- Título grande negro -->
     <div class="banner">
       <h1>Bastian-fy</h1>
     </div>
 
     <main class="contenido">
 
+      <!-- Tarjeta del reproductor -->
       <article class="tarjeta reproductor">
         <img id="portada" class="portada" src="" alt="Portada de la canción">
 
@@ -88,6 +99,7 @@
         </div>
       </article>
 
+      <!-- Lista de canciones -->
       <aside class="lista">
         <h2>Lista de canciones</h2>
         <!-- El JavaScript llena esta lista automáticamente -->
@@ -97,6 +109,7 @@
     </main>
   </section>
 
+  <!-- El elemento que realmente reproduce el audio (no se ve) -->
   <audio id="audio"></audio>
 
   <!-- Nuestro código -->
