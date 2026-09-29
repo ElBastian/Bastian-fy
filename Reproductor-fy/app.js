@@ -77,7 +77,7 @@ const USUARIO_CORRECTO = "usuario";
 const CONTRASENA_CORRECTA = "1234";
 
 function iniciarSesion(evento) {
-  // Evita que el formulario recargue la página
+
   evento.preventDefault();
 
   const usuarioEscrito = campoUsuario.value.trim();
@@ -103,11 +103,6 @@ function cerrarSesion() {
   pantallaReproductor.classList.add("oculto");
   pantallaLogin.classList.remove("oculto");
 }
-
-
-// -----------------------------------------------------
-// 4. FUNCIONES DEL REPRODUCTOR
-// -----------------------------------------------------
 
 // Convierte segundos (ej. 125) a texto "2:05"
 function formatearTiempo(segundos) {
@@ -179,7 +174,6 @@ function actualizarProgreso() {
   tiempoActual.textContent = formatearTiempo(audio.currentTime);
 
   if (audio.duration > 0) {
-    // Porcentaje que ya sonó (de 0 a 100)
     barraProgreso.value = (audio.currentTime / audio.duration) * 100;
     pintarBarra();
   }
@@ -236,12 +230,6 @@ function marcarCancionEnLista() {
   }
 }
 
-
-// -----------------------------------------------------
-// 5. EVENTOS
-// Aquí conectamos los botones con las funciones
-// -----------------------------------------------------
-
 // Login
 formularioLogin.addEventListener("submit", iniciarSesion);
 botonSalir.addEventListener("click", cerrarSesion);
@@ -266,9 +254,5 @@ audio.addEventListener("loadedmetadata", function () {
 // Cuando termina una canción, pasa sola a la siguiente
 audio.addEventListener("ended", siguienteCancion);
 
-
-// -----------------------------------------------------
-// AL ABRIR LA PÁGINA
-// -----------------------------------------------------
 crearLista();
 cargarCancion(0);
