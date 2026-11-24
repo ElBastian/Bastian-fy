@@ -5,12 +5,8 @@ Reproductor de música hecho con HTML, CSS y JavaScript básico.
 ## Cómo abrirlo
 1. Descomprime la carpeta.
 2. Abre `index.html` en el navegador (doble clic), o mejor con la extensión **Live Server** de VS Code.
-3. Inicia sesión:
-   - **Usuario:** `usuario`
-   - **Contraseña:** `1234`
 
 ## Qué hace
-- Login con usuario y contraseña.
 - Muestra portada, título y artista de la canción.
 - Botones de reproducir, pausar, anterior y siguiente.
 - Tiempo actual, duración y barra de progreso (se puede mover para adelantar).
@@ -21,9 +17,9 @@ Reproductor de música hecho con HTML, CSS y JavaScript básico.
 ## Carpetas
 ```
 Reproductor-fy/
-├── index.html      → estructura de la página (login + reproductor)
+├── index.html      → estructura de la página (reproductor)
 ├── styles.css      → colores, tamaños y versión celular/computadora
-├── app.js          → lógica: login, lista y controles
+├── app.js          → lógica: lista y controles
 ├── canciones/      → los archivos .mp3
 ├── portadas/       → una imagen por canción
 ├── Design.md       → guía de diseño (colores y tipografía)

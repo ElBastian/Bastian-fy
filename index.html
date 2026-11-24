@@ -2,65 +2,25 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <!-- Esta línea hace que la página se vea bien en el celular -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bastian-fy</title>
 
-  <!-- Tipografías (sustitutos de las fuentes de Design.md) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300&display=swap" rel="stylesheet">
 
-  <!-- Nuestros estilos -->
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- ============================================ -->
-  <!-- PANTALLA 1: LOGIN                            -->
-  <!-- ============================================ -->
-  <section id="pantalla-login" class="login">
-    <div class="banner banner-login">
-      <h1>Bastian-fy</h1>
-    </div>
+  <section id="pantalla-reproductor">
 
-    <form id="formulario-login" class="tarjeta login-caja">
-      <h2>Iniciar sesión</h2>
-
-      <label for="campo-usuario">Usuario</label>
-      <input type="text" id="campo-usuario" autocomplete="username" required>
-
-      <label for="campo-contrasena">Contraseña</label>
-      <input type="password" id="campo-contrasena" autocomplete="current-password" required>
-
-      <!-- Aquí se muestra el mensaje de error si los datos están mal -->
-      <p id="mensaje-error" class="error"></p>
-
-      <button type="submit" class="boton-principal">Entrar</button>
-    </form>
-  </section>
-
-
-  <!-- ============================================ -->
-  <!-- PANTALLA 2: REPRODUCTOR (oculta al inicio)   -->
-  <!-- ============================================ -->
-  <section id="pantalla-reproductor" class="oculto">
-
-    <!-- Barra de arriba -->
-    <header class="barra-superior">
-      <span id="saludo">Hola</span>
-      <span class="marca">Bastian-fy</span>
-      <button id="boton-salir" class="enlace">Cerrar sesión</button>
-    </header>
-
-    <!-- Título grande negro -->
     <div class="banner">
       <h1>Bastian-fy</h1>
     </div>
 
     <main class="contenido">
 
-      <!-- Tarjeta del reproductor -->
       <article class="tarjeta reproductor">
         <img id="portada" class="portada" src="" alt="Portada de la canción">
 
@@ -70,7 +30,6 @@
           <p id="artista" class="artista">Artista</p>
         </div>
 
-        <!-- Barra de progreso y tiempos -->
         <div class="progreso">
           <input type="range" id="barra-progreso" min="0" max="100" value="0" step="0.1" aria-label="Progreso de la canción">
           <div class="tiempos">
@@ -79,7 +38,6 @@
           </div>
         </div>
 
-        <!-- Botones de control -->
         <div class="controles">
           <button id="boton-anterior" class="boton-control" aria-label="Canción anterior">
             <svg viewBox="0 0 24 24"><path d="M6 5h2v14H6zM20 5v14L9 12z"/></svg>
@@ -99,20 +57,16 @@
         </div>
       </article>
 
-      <!-- Lista de canciones -->
       <aside class="lista">
         <h2>Lista de canciones</h2>
-        <!-- El JavaScript llena esta lista automáticamente -->
         <ol id="lista-canciones"></ol>
       </aside>
 
     </main>
   </section>
 
-  <!-- El elemento que realmente reproduce el audio (no se ve) -->
   <audio id="audio"></audio>
 
-  <!-- Nuestro código -->
   <script src="app.js"></script>
 </body>
 </html>

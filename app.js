@@ -45,18 +45,6 @@ const canciones = [
 
 let cancionActual = 0;
 
-// Login
-const pantallaLogin = document.getElementById("pantalla-login");
-const formularioLogin = document.getElementById("formulario-login");
-const campoUsuario = document.getElementById("campo-usuario");
-const campoContrasena = document.getElementById("campo-contrasena");
-const mensajeError = document.getElementById("mensaje-error");
-
-// Reproductor
-const pantallaReproductor = document.getElementById("pantalla-reproductor");
-const saludo = document.getElementById("saludo");
-const botonSalir = document.getElementById("boton-salir");
-
 const audio = document.getElementById("audio");
 const portada = document.getElementById("portada");
 const titulo = document.getElementById("titulo");
@@ -73,38 +61,6 @@ const botonSiguiente = document.getElementById("boton-siguiente");
 
 const listaCanciones = document.getElementById("lista-canciones");
 
-const USUARIO_CORRECTO = "usuario";
-const CONTRASENA_CORRECTA = "1234";
-
-function iniciarSesion(evento) {
-
-  evento.preventDefault();
-
-  const usuarioEscrito = campoUsuario.value.trim();
-  const contrasenaEscrita = campoContrasena.value;
-
-  if (usuarioEscrito === USUARIO_CORRECTO && contrasenaEscrita === CONTRASENA_CORRECTA) {
-    // Datos correctos: escondemos el login y mostramos el reproductor
-    mensajeError.textContent = "";
-    pantallaLogin.classList.add("oculto");
-    pantallaReproductor.classList.remove("oculto");
-    saludo.textContent = "Hola, " + usuarioEscrito;
-  } else {
-    // Datos incorrectos: mostramos un mensaje
-    mensajeError.textContent = "Usuario o contraseña incorrectos.";
-    campoContrasena.value = "";
-  }
-}
-
-function cerrarSesion() {
-  pausar();
-  campoUsuario.value = "";
-  campoContrasena.value = "";
-  pantallaReproductor.classList.add("oculto");
-  pantallaLogin.classList.remove("oculto");
-}
-
-// Convierte segundos (ej. 125) a texto "2:05"
 function formatearTiempo(segundos) {
   if (isNaN(segundos)) {
     return "0:00";
@@ -112,12 +68,11 @@ function formatearTiempo(segundos) {
   const minutos = Math.floor(segundos / 60);
   let resto = Math.floor(segundos % 60);
   if (resto < 10) {
-    resto = "0" + resto;   // para que se vea 2:05 y no 2:5
+    resto = "0" + resto;
   }
   return minutos + ":" + resto;
 }
 
-// Muestra en pantalla la canción número "indice"
 function cargarCancion(indice) {
   cancionActual = indice;
   const cancion = canciones[indice];
@@ -128,7 +83,6 @@ function cargarCancion(indice) {
   titulo.textContent = cancion.titulo;
   artista.textContent = cancion.artista;
 
-  // Reiniciamos la barra y los tiempos
   barraProgreso.value = 0;
   pintarBarra();
   tiempoActual.textContent = "0:00";
@@ -151,7 +105,6 @@ function pausar() {
 
 function siguienteCancion() {
   let nuevoIndice = cancionActual + 1;
-  // Si pasamos la última, regresamos a la primera
   if (nuevoIndice >= canciones.length) {
     nuevoIndice = 0;
   }
@@ -161,7 +114,6 @@ function siguienteCancion() {
 
 function cancionAnterior() {
   let nuevoIndice = cancionActual - 1;
-  // Si estamos en la primera, vamos a la última
   if (nuevoIndice < 0) {
     nuevoIndice = canciones.length - 1;
   }
@@ -169,7 +121,6 @@ function cancionAnterior() {
   reproducir();
 }
 
-// Se ejecuta muchas veces por segundo mientras suena la canción
 function actualizarProgreso() {
   tiempoActual.textContent = formatearTiempo(audio.currentTime);
 
@@ -179,14 +130,12 @@ function actualizarProgreso() {
   }
 }
 
-// Pinta de negro la parte de la barra que ya sonó
 function pintarBarra() {
   const porcentaje = barraProgreso.value;
   barraProgreso.style.background =
     "linear-gradient(to right, #1d1d1b " + porcentaje + "%, #e2dedb " + porcentaje + "%)";
 }
 
-// Cuando el usuario mueve la barra, adelantamos o regresamos la canción
 function moverProgreso() {
   if (audio.duration > 0) {
     audio.currentTime = (barraProgreso.value / 100) * audio.duration;
@@ -194,7 +143,6 @@ function moverProgreso() {
   pintarBarra();
 }
 
-// Crea la lista de canciones en el HTML
 function crearLista() {
   for (let i = 0; i < canciones.length; i++) {
     const cancion = canciones[i];
@@ -208,7 +156,6 @@ function crearLista() {
         '<span>' + cancion.artista + '</span>' +
       '</div>';
 
-    // Al hacer clic en una canción, se carga y se reproduce
     elemento.addEventListener("click", function () {
       cargarCancion(i);
       reproducir();
@@ -218,7 +165,6 @@ function crearLista() {
   }
 }
 
-// Resalta en la lista la canción que está seleccionada
 function marcarCancionEnLista() {
   const elementos = listaCanciones.children;
   for (let i = 0; i < elementos.length; i++) {
@@ -230,28 +176,19 @@ function marcarCancionEnLista() {
   }
 }
 
-// Login
-formularioLogin.addEventListener("submit", iniciarSesion);
-botonSalir.addEventListener("click", cerrarSesion);
-
-// Botones del reproductor
 botonReproducir.addEventListener("click", reproducir);
 botonPausar.addEventListener("click", pausar);
 botonSiguiente.addEventListener("click", siguienteCancion);
 botonAnterior.addEventListener("click", cancionAnterior);
 
-// Barra de progreso
 barraProgreso.addEventListener("input", moverProgreso);
 
-// Eventos del audio
 audio.addEventListener("timeupdate", actualizarProgreso);
 
-// Cuando ya se sabe cuánto dura la canción, la mostramos
 audio.addEventListener("loadedmetadata", function () {
   duracion.textContent = formatearTiempo(audio.duration);
 });
 
-// Cuando termina una canción, pasa sola a la siguiente
 audio.addEventListener("ended", siguienteCancion);
 
 crearLista();

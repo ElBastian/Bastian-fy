@@ -1,10 +1,9 @@
-
 :root {
-  --pergamino: #e2dedb;   /* fondo de la página */
-  --crema: #cdc6be;       /* fondo de las tarjetas */
-  --tinta: #1d1d1b;       /* texto y bordes */
-  --carbon: #69645f;      /* texto secundario */
-  --naranja: #c03f13;     /* único color de acento */
+  --pergamino: #e2dedb;
+  --crema: #cdc6be;
+  --tinta: #1d1d1b;
+  --carbon: #69645f;
+  --naranja: #c03f13;
 
   --letra-texto: 'Source Serif 4', Georgia, serif;
   --letra-titulos: 'Bodoni Moda', Didot, Georgia, serif;
@@ -63,98 +62,6 @@ button {
   padding: 24px;
 }
 
-.login {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.banner-login h1 {
-  text-align: center;
-}
-
-.login-caja {
-  width: calc(100% - 32px);   
-  max-width: 380px;
-  margin: 43px auto;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.login-caja h2 {
-  font-family: var(--letra-titulos);
-  font-size: 40px;
-  line-height: 0.91;
-  letter-spacing: -0.04em;
-  margin-bottom: 14px;
-}
-
-.login-caja label {
-  font-size: 14px;
-  color: var(--carbon);
-  margin-top: 6px;
-}
-
-.login-caja input {
-  font-family: inherit;
-  font-size: 17px;
-  padding: 10px 12px;
-  border: 1px solid var(--tinta);
-  border-radius: var(--radio-boton);
-  background: var(--pergamino);
-  color: var(--tinta);
-}
-
-.login-caja input:focus {
-  outline: 2px solid var(--naranja);
-  outline-offset: 1px;
-}
-
-.error {
-  color: var(--naranja);
-  font-size: 15px;
-  min-height: 20px;
-}
-
-.boton-principal {
-  background: var(--tinta);
-  color: var(--pergamino);
-  border: none;
-  border-radius: var(--radio-boton);
-  padding: 12px;
-  font-size: 18px;
-}
-
-.boton-principal:hover {
-  background: #000;
-}
-
-/* ---------- 6. Barra superior ---------- */
-.barra-superior {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 14px 16px;
-  border-bottom: 1px solid var(--tinta);
-  font-size: 17px;
-}
-
-.marca {
-  font-style: italic;
-}
-
-.enlace {
-  background: none;
-  border: none;
-  color: var(--tinta);
-  font-size: 17px;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-/* ---------- 7. Distribución: reproductor + lista ---------- */
-/* En celular: una columna (una cosa debajo de otra) */
 .contenido {
   max-width: 1200px;
   margin: 0 auto;
@@ -164,7 +71,6 @@ button {
   gap: 29px;
 }
 
-/* ---------- 8. Reproductor ---------- */
 .reproductor {
   display: flex;
   flex-direction: column;
@@ -204,13 +110,11 @@ button {
   margin-top: 8px;
 }
 
-/* Barra de progreso */
 .progreso input[type="range"] {
   width: 100%;
   height: 4px;
   -webkit-appearance: none;
   appearance: none;
-  /* El fondo se pinta desde JavaScript para mostrar lo que ya sonó */
   background: var(--pergamino);
   cursor: pointer;
 }
@@ -240,7 +144,6 @@ button {
   font-variant-numeric: tabular-nums;
 }
 
-/* Botones */
 .controles {
   display: flex;
   justify-content: center;
@@ -286,7 +189,6 @@ button {
   height: 30px;
 }
 
-/* ---------- 9. Lista de canciones ---------- */
 .lista h2 {
   font-family: var(--letra-titulos);
   font-size: 32px;
@@ -328,7 +230,7 @@ button {
 
 .lista .datos {
   flex: 1;
-  min-width: 0;          /* permite recortar textos largos */
+  min-width: 0;
 }
 
 .lista .datos strong {
@@ -345,7 +247,6 @@ button {
   color: var(--carbon);
 }
 
-/* Canción que está sonando */
 .lista li.activa {
   background: var(--tinta);
   color: var(--pergamino);
@@ -355,27 +256,20 @@ button {
   color: var(--crema);
 }
 
-/* ---------- 10. COMPUTADORA (pantallas de 900px o más) ---------- */
 @media (min-width: 900px) {
   .contenido {
-    grid-template-columns: 420px 1fr;  /* dos columnas */
+    grid-template-columns: 420px 1fr;
     align-items: start;
     gap: 43px;
     padding-top: 43px;
   }
 
-  /* El reproductor se queda fijo al bajar por la lista */
   .reproductor {
     position: sticky;
     top: 24px;
   }
-
-  .barra-superior {
-    padding: 14px 28px;
-  }
 }
 
-/* ---------- 11. Celulares muy chicos ---------- */
 @media (max-width: 380px) {
   .tarjeta {
     padding: 16px;

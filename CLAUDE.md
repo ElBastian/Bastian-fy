@@ -11,5 +11,4 @@ Proyecto de uni: reproductor de música en HTML, CSS y JavaScript **sin librerí
 - Las canciones solo se agregan en el arreglo `canciones` de `app.js`.
 
 ## Datos
-- Login: usuario `usuario`, contraseña `1234`.
 - Audios en `canciones/`, portadas en `portadas/`.
